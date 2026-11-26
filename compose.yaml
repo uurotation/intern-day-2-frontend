@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: intern-day-2-frontend:local
+    container_name: intern-day-2-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      # 浏览器直连宿主机映射的后端端口，不能用容器内的 localhost 或服务名。
+      VITE_API_BASE_URL: "http://localhost:8000"
+    restart: unless-stopped

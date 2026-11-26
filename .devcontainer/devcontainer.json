@@ -1,0 +1,21 @@
+{
+  "name": "intern-day-2-frontend",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=intern-day-2-frontend-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "forwardPorts": [5173],
+  "onCreateCommand": "sudo mkdir -p node_modules && sudo chown -R node:node node_modules",
+  "postCreateCommand": "pnpm install",
+  "remoteUser": "node"
+}
